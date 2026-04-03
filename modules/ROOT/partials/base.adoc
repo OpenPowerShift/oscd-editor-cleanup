@@ -1,0 +1,13 @@
+:plugin-name: oscd-editor-cleanup
+:plugin-title: Cleanup
+:url-repo: https://github.com/openpowershift/oscd-editor-cleanup
+:url-issues: https://github.com/openpowershift/oscd-editor-cleanup/issues
+:url-demo: https://openpowershift.github.io/oscd-editor-cleanup
+:url-ci-bundle: https://openpowershift.github.io/oscd-editor-cleanup/oscd-editor-cleanup.js
+:url-openscd-shell: https://github.com/OMICRONEnergyOSS/oscd-shell
+:url-openscd: https://openscd.org/
+:url-npm: https://www.npmjs.com/package/@omicronenergy/oscd-editor-cleanup
+:url-chat: https://openscd.zulipchat.com/
+:sectnums:
+:experimental:
+:nofooter:

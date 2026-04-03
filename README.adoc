@@ -1,0 +1,30 @@
+= OpenSCD Plugin: Cleanup
+:plugin-name-kebab-case: oscd-editor-cleanup
+:nofooter:
+:uri-docs: https://openpowershift.github.io/oscd-editor-cleanup/docs
+:uri-demo: https://openpowershift.github.io/oscd-editor-cleanup
+:uri-sysconex: https://sysconex.openpowershift.com/
+:uri-issues: https://github.com/openpowershift/oscd-editor-cleanup/issues
+
+This plugin identifies and removes unreferenced SCL elements — DataSets, orphaned control blocks, and unused DataTypeTemplates entries — that accumulate over the lifecycle of an IEC 61850 configuration project.
+
+* {uri-docs}[Documentation]
+* {uri-demo}[Live demo]
+* {uri-sysconex}[Try in Sysconex]
+* {uri-issues}[Report an issue]
+
+== Development
+
+[source,bash]
+----
+npm install
+npm start      # dev server with hot reload at http://localhost:8000
+npm test       # run tests
+npm run lint   # check for lint errors
+----
+
+== License
+
+Licensed under the Apache License 2.0.
+
+© Daniel Mulholland, OpenPowerShift 2026. All Rights Reserved.

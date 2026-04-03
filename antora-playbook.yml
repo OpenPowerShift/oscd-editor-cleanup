@@ -1,0 +1,20 @@
+site:
+  title: OpenSCD Cleanup Plugin
+  url: https://openpowershift.github.io/oscd-editor-cleanup/docs
+  start_page: oscd-editor-cleanup::introduction.adoc
+
+content:
+  sources:
+    - url: .
+      start_path: .
+      branches: HEAD
+      edit_url: 'https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/{refname}/{path}'
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental_ui
+
+output:
+  dir: dist/docs

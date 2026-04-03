@@ -1,0 +1,55 @@
+<title>oscd-editor-cleanup demo</title>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300;400;500&display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Material+Symbols+Outlined&display=block"
+/>
+<link rel="stylesheet" href="./sysconex-theme/colors.css" />
+<link rel="stylesheet" href="./sysconex-theme/theming.css" />
+<oscd-shell></oscd-shell>
+<script type="module">
+  /* Uncomment the following lines to monitor if custom elements are defined globally
+   * To use this, comment out ALL other plugings to avoid false negatives.
+   */
+  // const customElementsDefineFn = customElements.define;
+  // customElements.define = (name, constructor, options) => {
+  //   console.warn(`Custom Element defined Globally: ${name}, do not use customElements.define in your code!`);
+  //   customElementsDefineFn.call(customElements, name, constructor, options);
+  // };
+
+  import '@webcomponents/scoped-custom-element-registry';
+  import '@omicronenergy/oscd-shell/oscd-shell.js';
+  import { plugins } from './plugins.js';
+
+  const editor = document.querySelector('oscd-shell');
+  editor.plugins = plugins;
+
+  const params = new URL(document.location).searchParams;
+  for (const [name, value] of params) {
+    editor.setAttribute(name, value);
+  }
+
+  const sample = await fetch('sample.scd').then(r => r.text());
+  editor.docs = {
+    ['sample.scd']: new DOMParser().parseFromString(sample, 'application/xml'),
+  };
+  editor.docName = 'sample.scd';
+</script>
+
+<style>
+  * {
+    --oscd-theme-text-font: 'Roboto';
+    --oscd-theme-icon-font: 'Material Symbols Outlined';
+
+    margin: 0px;
+    padding: 0px;
+  }
+
+  abbr {
+    text-decoration: none;
+    border-bottom: none;
+  }
+</style>

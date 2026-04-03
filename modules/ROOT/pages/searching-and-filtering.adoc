@@ -1,0 +1,59 @@
+= Searching and Filtering
+include::partial$base.adoc[]
+
+Each of the three cleanup panels provides a consistent set of controls for narrowing down the list of candidates before selecting and deleting them.
+
+== Search bar
+
+The search bar filters the list in real time as you type.
+It matches against multiple fields simultaneously:
+
+[cols="2,3,3"]
+|===
+|Panel |Fields searched |Example query
+
+|Unreferenced Datasets
+|DataSet name, IED name, manufacturer, IED type
+|`SIEMENS` to find all datasets from Siemens IEDs
+
+|Orphaned Control Blocks
+|Control block name, type name, IED name, manufacturer, IED type
+|`GSEControl` to find only GOOSE control blocks
+
+|Unreferenced Data Types
+|Type `id`, type category, secondary description (lnClass / cdc / desc)
+|`XCBR` to find all circuit-breaker Logical Node types
+|===
+
+The search is case-insensitive.
+Clear the field to return to the full unfiltered list.
+
+== Type filter toggles
+
+The *Orphaned Control Blocks* and *Unreferenced Data Types* panels both have a row of icon toggle buttons that include or exclude specific element types.
+
+* Active toggles are highlighted in the theme's secondary colour.
+* Inactive toggles appear muted.
+* Click a toggle to flip its state.
+
+Filter toggles work in combination with the search bar — both filters are applied simultaneously.
+
+== Select All
+
+The checkbox to the left of the search bar selects or deselects all items currently visible in the list.
+
+[NOTE]
+====
+*Select All* respects the current search and filter state.
+If a search term is active, only the matching items are selected — items hidden by the filter are not affected.
+This makes it easy to select and delete all items of a particular IED or type in one step: filter, select all, delete.
+====
+
+== Recommended workflow for large files
+
+. Apply a type filter or search term to scope the list to a manageable subset.
+. Review the remaining rows to confirm they are safe to remove.
+. Use *Select All* to mark the visible items.
+. Click the delete button.
+. Repeat for the next category or search term.
+. Use Ctrl+Z (undo) at any point to reverse a deletion.

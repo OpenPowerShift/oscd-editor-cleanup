@@ -1,0 +1,105 @@
+= Installation
+include::partial$base.adoc[]
+
+== Try it online
+
+The fastest way to evaluate the plugin is to use the {url-demo}[live demo].
+The demo loads a sample SCD file automatically and activates the plugin.
+No installation is required.
+
+== Using with OpenSCD Shell (via URL)
+
+If you are running your own {url-openscd-shell}[OpenSCD Shell] instance, you can load this plugin directly from the continuous integration build:
+
+[source,js,subs="+attributes"]
+----
+const editor = document.querySelector('oscd-shell');
+const plugins = {
+  editor: [
+    {
+      name: 'Cleanup',
+      translations: { de: 'Bereinigung' },
+      icon: 'cleaning_services',
+      requireDoc: true,
+      src: '{url-ci-bundle}',
+    },
+  ],
+};
+editor.plugins = plugins;
+----
+
+[CAUTION]
+====
+The CI bundle always reflects the latest commit on the `main` branch and may include unreleased changes.
+For production use, pin to a released npm package (see below).
+====
+
+== Installing from npm
+
+For production distributions, install the released package:
+
+[source,bash,subs="+attributes"]
+----
+npm install @omicronenergy/oscd-editor-cleanup
+----
+
+Then register the plugin with the shell:
+
+[source,js,subs="+attributes"]
+----
+import OscdEditorCleanup from '@omicronenergy/oscd-editor-cleanup';
+
+const { registry } = document.querySelector('oscd-shell');
+registry.define('oscd-editor-cleanup', OscdEditorCleanup);
+
+const editor = document.querySelector('oscd-shell');
+const plugins = {
+  editor: [
+    {
+      name: 'Cleanup',
+      translations: { de: 'Bereinigung' },
+      icon: 'cleaning_services',
+      requireDoc: true,
+      tagName: 'oscd-editor-cleanup',
+    },
+  ],
+};
+editor.plugins = plugins;
+----
+
+=== Scoped custom elements
+
+This plugin uses `@open-wc/scoped-elements` and does *not* register itself in the global custom element registry.
+You must use the `registry.define` pattern shown above, or the plugin will not render.
+
+== Plugin properties
+
+The plugin accepts the following properties on its element:
+
+[cols="1,1,3"]
+|===
+|Property |Type |Description
+
+|`doc`
+|`XMLDocument`
+|The loaded SCL document. Set automatically by OpenSCD Shell.
+
+|`docVersion`
+|`unknown`
+|Opaque version token used by the shell to signal document changes and trigger re-renders.
+|===
+
+== Peer dependencies
+
+The plugin is built against and expects the following peer dependencies to be provided by the host application:
+
+[source,json]
+----
+{
+  "@openscd/scl-lib": "^2.0.0",
+  "@openscd/oscd-api": "^0.1.0",
+  "@omicronenergy/oscd-ui": "^0.0.11",
+  "@omicronenergy/oscd-scl-dialogs": "^0.0.12",
+  "lit": "^3.0.0"
+}
+----

@@ -1,0 +1,131 @@
+= Development
+include::partial$base.adoc[]
+
+== Prerequisites
+
+* Node.js 22 or later
+* npm 10 or later
+* Git
+
+== Getting started
+
+Clone the repository and install dependencies:
+
+[source,bash,subs="+attributes"]
+----
+git clone {url-repo}.git
+cd oscd-editor-cleanup
+npm install
+----
+
+== Running the demo locally
+
+Start the development server with hot module replacement:
+
+[source,bash]
+----
+npm start
+----
+
+This builds the TypeScript source, starts a file watcher, and opens the demo at http://localhost:8000/demo/index.html.
+The demo loads a sample SCD file automatically and registers the plugin.
+
+Changes to source files are compiled incrementally.
+Changes to `demo/` are copied to `dist/demo/` automatically.
+
+== Running the tests
+
+Run the full test suite once:
+
+[source,bash]
+----
+npm test
+----
+
+Run tests in interactive watch mode:
+
+[source,bash]
+----
+npm run test:watch
+----
+
+Tests use https://modern-web.dev/docs/test-runner/overview/[@web/test-runner] with Playwright.
+The first run will download browser binaries automatically.
+
+== Linting and formatting
+
+Check for lint errors:
+
+[source,bash]
+----
+npm run lint
+----
+
+Auto-fix lint and formatting issues:
+
+[source,bash]
+----
+npm run format
+----
+
+The project uses ESLint with the `eslint-plugin-lit`, `eslint-plugin-wc`, and `eslint-plugin-lit-a11y` plugins, and Prettier for formatting.
+
+== Building the bundle
+
+Produce a single-file JavaScript bundle suitable for deployment:
+
+[source,bash]
+----
+npm run bundle
+----
+
+Output is written to `dist/oscd-editor-cleanup.js`.
+
+== Building the documentation
+
+Build the Antora documentation site locally:
+
+[source,bash]
+----
+npm run build:docs
+----
+
+Output is written to `dist/docs/`.
+Open `dist/docs/index.html` in a browser to preview.
+
+== Project structure
+
+[source]
+----
+src/
+  oscd-editor-cleanup.ts       # Root plugin component
+  cleanup/
+    datasets-container.ts      # Unreferenced Datasets panel
+    control-blocks-container.ts# Orphaned Control Blocks panel
+    datatypes-container.ts     # Unreferenced Data Types panel
+    foundation.ts              # Shared utility functions
+demo/                          # Local development demo
+modules/ROOT/                  # Antora documentation source
+  pages/                       # AsciiDoc page files
+  partials/                    # Shared AsciiDoc includes
+test/                          # Test files
+dist/                          # Build output (not committed)
+----
+
+== Commit conventions
+
+This project uses https://www.conventionalcommits.org/[Conventional Commits].
+Commit messages are enforced by `commitlint` on the pre-commit hook installed by Husky.
+
+Accepted prefixes: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `build`, `ci`, `perf`.
+
+== Custom elements manifest
+
+The custom elements manifest is generated as part of the build:
+
+[source,bash]
+----
+npm run analyze
+----
+
+Output is written to `custom-elements.json`.

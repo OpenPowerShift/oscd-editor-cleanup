@@ -1,0 +1,84 @@
+= Unreferenced Data Types
+include::partial$base.adoc[]
+
+The *Unreferenced Data Types* panel lists entries in the `DataTypeTemplates` section of the SCL document that are not referenced by any Logical Node or other Data Type.
+
+== Background
+
+The `DataTypeTemplates` section defines the type library for an SCL file: `LNodeType`, `DOType`, `DAType`, and `EnumType` entries describe the structure of Logical Nodes and their data attributes.
+
+These definitions become unreferenced when:
+
+* An IED or Logical Node was removed but its type definitions were left in the `DataTypeTemplates` section.
+* Type definitions were imported (e.g., during an IED import) that do not correspond to any IED in the file.
+* A type was created for a Logical Node type that was later replaced with a different type.
+
+Unreferenced data type definitions do not affect runtime behaviour, but they can substantially inflate file size, especially in large multi-IED projects with many Logical Node varieties.
+
+== Using the panel
+
+=== Filter toggles
+
+Four toggles let you control which categories of data type are shown:
+
+[cols="1,2"]
+|===
+|Toggle |Type
+
+|LN icon
+|`LNodeType`
+
+|DO icon
+|`DOType`
+
+|DA icon
+|`DAType`
+
+|Enum icon
+|`EnumType`
+|===
+
+All four are enabled by default.
+Click a toggle to exclude that category from the list.
+
+=== Also remove subtypes
+
+This checkbox is shown in the filter row.
+When checked (the default), deleting selected data types will also recursively delete any sub-types that become unreferenced as a result.
+
+For example, deleting an `LNodeType` may leave `DOType` and `DAType` entries that were only referenced from that `LNodeType`.
+With this option enabled, those will be identified and deleted in the same operation.
+
+[NOTE]
+====
+Sub-type removal uses a recursive graph traversal to identify which types become unused.
+A `DOType` or `DAType` referenced by *any other type that remains* will not be deleted even if it was also referenced by a deleted type.
+====
+
+Uncheck this option if you want to delete only the top-level items you have selected and leave all sub-type definitions intact.
+
+=== Reviewing candidates
+
+Each row shows:
+
+* The type `id` attribute
+* A secondary description — for `LNodeType` this is the `lnClass`; for `DOType` the `cdc`; for `DAType` and `EnumType` the `desc`
+
+Hover over a row to reveal the edit button, which opens the SCL edit dialog for that type.
+
+=== Searching
+
+Use the search bar to filter by `id`, type category (e.g. `LNodeType`), or secondary description.
+See xref:searching-and-filtering.adoc[] for full details.
+
+=== Selecting and removing
+
+Check items individually or use the *Select All* checkbox in the search bar.
+Click *Remove Selected Data Types* to delete the selection (and any recursively identified sub-types if the option is enabled).
+
+All changes are dispatched as a single edit event and can be undone.
+
+== What is deleted
+
+* The selected `LNodeType`, `DOType`, `DAType`, or `EnumType` elements
+* If *Also remove subtypes* is checked: any `DOType`, `DAType`, or `EnumType` entries that become exclusively unreferenced after the deletion of the selected items

@@ -1,0 +1,1328 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/oscd-editor-cleanup.spec.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TestOscdEditorCleanupEmpty",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...OscdEditorCleanup.scopedElements, // eslint-disable-next-line @typescript-eslint/no-explicit-any 'oscd-scl-dialogs': MockOscdSclDialogsEmpty as any, }",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              },
+              "description": "The document being edited as provided to plugins by [[`OpenSCD`]].",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sclDialogs",
+              "type": {
+                "text": "OscdSclDialogs"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "handleEditDialogEvent",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "OscdEditorCleanup",
+            "module": "/src/oscd-editor-cleanup.js"
+          },
+          "tagName": "oscd-editor-cleanup-empty",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TestOscdEditorCleanupWithEdits",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...OscdEditorCleanup.scopedElements, // eslint-disable-next-line @typescript-eslint/no-explicit-any 'oscd-scl-dialogs': MockOscdSclDialogsWithEdits as any, }",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              },
+              "description": "The document being edited as provided to plugins by [[`OpenSCD`]].",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sclDialogs",
+              "type": {
+                "text": "OscdSclDialogs"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "handleEditDialogEvent",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "OscdEditorCleanup",
+            "module": "/src/oscd-editor-cleanup.js"
+          },
+          "tagName": "oscd-editor-cleanup-with-edits",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OscdEditorCleanupFixtureEmpty",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'oscd-editor-cleanup': TestOscdEditorCleanupEmpty, }"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "cleanup-fixture-empty",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OscdEditorCleanupFixtureWithEdits",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'oscd-editor-cleanup': TestOscdEditorCleanupWithEdits, }"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "cleanup-fixture-with-edits",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "oscd-editor-cleanup-empty",
+          "declaration": {
+            "name": "TestOscdEditorCleanupEmpty",
+            "module": "src/oscd-editor-cleanup.spec.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "oscd-editor-cleanup-with-edits",
+          "declaration": {
+            "name": "TestOscdEditorCleanupWithEdits",
+            "module": "src/oscd-editor-cleanup.spec.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "cleanup-fixture-empty",
+          "declaration": {
+            "name": "OscdEditorCleanupFixtureEmpty",
+            "module": "src/oscd-editor-cleanup.spec.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "cleanup-fixture-with-edits",
+          "declaration": {
+            "name": "OscdEditorCleanupFixtureWithEdits",
+            "module": "src/oscd-editor-cleanup.spec.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/oscd-editor-cleanup.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An editor plugin for cleaning SCL references and definitions.",
+          "name": "OscdEditorCleanup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'cleanup-datasets': CleanupDatasets, 'cleanup-control-blocks': CleanupControlBlocks, 'cleanup-data-types': CleanupDataTypes, 'oscd-scl-dialogs': OscdSclDialogs, }"
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              },
+              "description": "The document being edited as provided to plugins by [[`OpenSCD`]]."
+            },
+            {
+              "kind": "field",
+              "name": "docName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sclDialogs",
+              "type": {
+                "text": "OscdSclDialogs"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "handleEditDialogEvent",
+              "privacy": "private"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "OscdEditorCleanup",
+            "module": "src/oscd-editor-cleanup.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/cleanup/control-blocks-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An editor component for cleaning SCL Control Blocks.",
+          "name": "CleanupControlBlocks",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'oscd-outlined-text-field': OscdOutlinedTextField, 'oscd-outlined-button': OscdOutlinedButton, 'oscd-icon-button': OscdIconButton, 'oscd-checkbox': OscdCheckbox, 'oscd-icon': OscdIcon, }"
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "unreferencedControls",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "attribute": "unreferencedControls"
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndices",
+              "type": {
+                "text": "Set<number>"
+              },
+              "privacy": "private",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "filterStates",
+              "type": {
+                "text": "Map<string, boolean>"
+              },
+              "privacy": "private",
+              "default": "new Map([ ['GSEControl', true], ['LogControl', true], ['SampledValueControl', true], ['ReportControl', false], ])",
+              "description": "Track filter toggle state per control type. ReportControl is hidden by default."
+            },
+            {
+              "kind": "field",
+              "name": "cleanButton",
+              "type": {
+                "text": "OscdOutlinedButton"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "cleanupListItems",
+              "type": {
+                "text": "NodeListOf<HTMLElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "cleanupAddressCheckbox",
+              "type": {
+                "text": "OscdCheckbox"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filteredControls",
+              "type": {
+                "text": "Array<{ item: Element; index: number }>"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isAllSelected",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggleItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleSelectAll",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleFilter",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "controlType",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderFilterIconButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "controlType",
+                  "type": {
+                    "text": "controlType"
+                  }
+                },
+                {
+                  "name": "initialState",
+                  "default": "true"
+                }
+              ],
+              "description": "Render a filter icon button for the given control type."
+            },
+            {
+              "kind": "method",
+              "name": "renderListItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "controlBlock",
+                  "type": {
+                    "text": "Element"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Render a list item for the control block cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "renderDeleteButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "description": "Render the delete button for the control block cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "renderUnreferencedControls",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "unreferencedControls",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "fieldName": "unreferencedControls"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CleanupControlBlocks",
+          "declaration": {
+            "name": "CleanupControlBlocks",
+            "module": "src/cleanup/control-blocks-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/cleanup/datasets-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An editor component for cleaning SCL datasets.",
+          "name": "CleanupDatasets",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'oscd-outlined-text-field': OscdOutlinedTextField, 'oscd-outlined-button': OscdOutlinedButton, 'oscd-icon-button': OscdIconButton, 'oscd-checkbox': OscdCheckbox, 'oscd-icon': OscdIcon, }"
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              },
+              "description": "The document being edited as provided to plugins by [[`OpenSCD`]]."
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "unreferencedDataSets",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "attribute": "unreferencedDataSets"
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndices",
+              "type": {
+                "text": "Set<number>"
+              },
+              "privacy": "private",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "cleanupButton",
+              "type": {
+                "text": "OscdOutlinedButton"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dataSetItems",
+              "type": {
+                "text": "NodeListOf<HTMLElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filteredDataSets",
+              "type": {
+                "text": "Array<{ item: Element; index: number }>"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isAllSelected",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggleItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleSelectAll",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderListItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dataSet",
+                  "type": {
+                    "text": "Element"
+                  },
+                  "description": "an unused SCL DataSet element."
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  },
+                  "description": "the data-array index."
+                }
+              ],
+              "description": "Provide a list item in the DataSet cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "renderDeleteButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "description": "Render the delete button for the dataset cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "renderUnreferencedDataSets",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "description": "Render the unreferenced datasets section."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "unreferencedDataSets",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "fieldName": "unreferencedDataSets"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CleanupDatasets",
+          "declaration": {
+            "name": "CleanupDatasets",
+            "module": "src/cleanup/datasets-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/cleanup/datatypes-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An editor component for cleaning SCL DataType templates.",
+          "name": "CleanupDataTypes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ 'oscd-outlined-text-field': OscdOutlinedTextField, 'oscd-outlined-button': OscdOutlinedButton, 'oscd-icon-button': OscdIconButton, 'oscd-checkbox': OscdCheckbox, 'oscd-icon': OscdIcon, }"
+            },
+            {
+              "kind": "field",
+              "name": "doc",
+              "type": {
+                "text": "XMLDocument"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "docVersion",
+              "type": {
+                "text": "unknown | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disableControlClean",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disableControlClean"
+            },
+            {
+              "kind": "field",
+              "name": "unreferencedDataTypes",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "attribute": "unreferencedDataTypes"
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndices",
+              "type": {
+                "text": "Set<number>"
+              },
+              "privacy": "private",
+              "default": "new Set()"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "filterStates",
+              "type": {
+                "text": "Map<string, boolean>"
+              },
+              "privacy": "private",
+              "default": "new Map([ ['LNodeType', true], ['DOType', true], ['DAType', true], ['EnumType', true], ])"
+            },
+            {
+              "kind": "field",
+              "name": "cleanButton",
+              "type": {
+                "text": "OscdOutlinedButton"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "cleanupListItems",
+              "type": {
+                "text": "NodeListOf<HTMLElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "cleanSubTypesCheckbox",
+              "type": {
+                "text": "OscdCheckbox"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filteredTypes",
+              "type": {
+                "text": "Array<{ item: Element; index: number }>"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isAllSelected",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggleItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleSelectAll",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleFilter",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dataType",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderFilterIconButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dataType",
+                  "type": {
+                    "text": "templateType"
+                  }
+                },
+                {
+                  "name": "initialState",
+                  "default": "true"
+                }
+              ],
+              "description": "Render a filter icon button for the given data type."
+            },
+            {
+              "kind": "method",
+              "name": "openDataTypeEditor",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dType",
+                  "type": {
+                    "text": "Element"
+                  }
+                },
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ],
+              "description": "Open the appropriate editor dialog for a given data type element."
+            },
+            {
+              "kind": "method",
+              "name": "renderListItem",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dType",
+                  "type": {
+                    "text": "Element"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Render a list item in the data type cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "getSubType",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Element | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "Given a datatype reference return the appropriate datatype object or null."
+            },
+            {
+              "kind": "method",
+              "name": "fetchTree",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "rootElements",
+                  "type": {
+                    "text": "Element[]"
+                  }
+                }
+              ],
+              "description": "Recurses from root elements to find all child datatype references (with duplicates)."
+            },
+            {
+              "kind": "method",
+              "name": "indexDataTypeTemplates",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Map<string, number>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "dttStart",
+                  "type": {
+                    "text": "Element[]"
+                  }
+                }
+              ],
+              "description": "Recurses through all datatype templates and indexes their usage."
+            },
+            {
+              "kind": "method",
+              "name": "getCleanItems",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "Element[]"
+                }
+              },
+              "description": "Get items from selection list and any subtypes."
+            },
+            {
+              "kind": "method",
+              "name": "renderDeleteButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "description": "Render the delete button for the data type cleanup container."
+            },
+            {
+              "kind": "method",
+              "name": "getUnusedType",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Element[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "usedSelector",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "keyAttributeName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "templateSelector",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Find unused types by scanning the SCL and comparing with the DataTypeTemplates."
+            },
+            {
+              "kind": "method",
+              "name": "getUnusedTypes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Element[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderUnreferencedDataTypes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disableControlClean",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableControlClean"
+            },
+            {
+              "name": "unreferencedDataTypes",
+              "type": {
+                "text": "Element[]"
+              },
+              "default": "[]",
+              "fieldName": "unreferencedDataTypes"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ScopedElementsMixin",
+              "package": "@open-wc/scoped-elements/lit-element.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CleanupDataTypes",
+          "declaration": {
+            "name": "CleanupDataTypes",
+            "module": "src/cleanup/datatypes-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/cleanup/util.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "cleanSCLItems",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "cleanItems",
+              "type": {
+                "text": "Element[]"
+              },
+              "description": "SCL elements to be removed."
+            }
+          ],
+          "description": "Build Remove edits to delete the supplied SCL elements from the document."
+        },
+        {
+          "kind": "function",
+          "name": "countBy",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "arr",
+              "type": {
+                "text": "string[]"
+              },
+              "description": "An array of strings."
+            }
+          ],
+          "description": "Provide frequency count of elements."
+        },
+        {
+          "kind": "function",
+          "name": "identitySort",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "elements",
+              "type": {
+                "text": "Element[]"
+              },
+              "description": "an array of Elements."
+            }
+          ],
+          "description": "Sort a list of Elements by their identity string."
+        },
+        {
+          "kind": "function",
+          "name": "uniq",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "arr",
+              "type": {
+                "text": "unknown[]"
+              },
+              "description": "an array of items with possible duplicates."
+            }
+          ],
+          "description": "Return a deduplicated array."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "cleanSCLItems",
+          "declaration": {
+            "name": "cleanSCLItems",
+            "module": "src/cleanup/util.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "countBy",
+          "declaration": {
+            "name": "countBy",
+            "module": "src/cleanup/util.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "identitySort",
+          "declaration": {
+            "name": "identitySort",
+            "module": "src/cleanup/util.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "uniq",
+          "declaration": {
+            "name": "uniq",
+            "module": "src/cleanup/util.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

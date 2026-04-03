@@ -1,0 +1,31 @@
+= Support
+include::partial$base.adoc[]
+:sectnums!:
+
+== Reporting issues
+
+Please report bugs, unexpected behaviour, and feature requests on the {url-issues}[GitHub issue tracker].
+
+When reporting a bug, include:
+
+* The version of the plugin (or the commit hash if using the CI build)
+* A minimal SCL file that reproduces the problem, if applicable
+* The browser and operating system you are using
+* A description of what you expected to happen and what actually happened
+
+== Community
+
+Join the {url-chat}[OpenSCD Zulip chat] to discuss this plugin and other OpenSCD tools with the community.
+
+== Source code
+
+The full source code is available at {url-repo}.
+
+Pull requests are welcome.
+See xref:development.adoc[] for instructions on how to build and test the plugin locally.
+
+== License
+
+This project is licensed under the https://www.apache.org/licenses/LICENSE-2.0[Apache License 2.0].
+
+© Daniel Mulholland, OpenPowerShift 2026.

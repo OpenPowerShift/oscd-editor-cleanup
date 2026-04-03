@@ -1,0 +1,62 @@
+= Unreferenced Datasets
+include::partial$base.adoc[]
+
+The *Unreferenced Datasets* panel lists every `DataSet` element in the SCL document that is not referenced by any control block.
+
+== Background
+
+In IEC 61850, a `DataSet` collects data attributes together so that a control block can publish or log them.
+A `DataSet` becomes unreferenced when:
+
+* The control block that used it (`GSEControl`, `SampledValueControl`, `LogControl`, or `ReportControl`) was deleted, but the `DataSet` itself was not.
+* The `datSet` attribute of a control block was changed to point to a different `DataSet`, leaving the old one without a subscriber.
+* A `DataSet` was created in anticipation of future use but never assigned to a control block.
+
+Unreferenced `DataSet` elements increase file size and can confuse engineering tools that enumerate datasets for subscription.
+
+== Using the panel
+
+=== Reviewing candidates
+
+Each row in the list shows:
+
+* The `DataSet` name
+* The IED that owns it, including manufacturer and type
+
+Hover over a row to reveal the edit button (pencil icon).
+Click it to open the SCL edit dialog for that element if you want to inspect or modify it before deciding whether to delete it.
+
+=== Searching
+
+Use the search bar at the top of the panel to filter the list by any combination of:
+
+* DataSet name
+* IED name
+* Manufacturer
+* IED type
+
+See xref:searching-and-filtering.adoc[] for full details.
+
+=== Selecting items for removal
+
+Check the checkbox on any row to mark it for deletion.
+Use the checkbox in the search bar to select or deselect all currently visible items at once.
+
+[TIP]
+====
+If you apply a search filter first and then use _Select All_, only the filtered results are selected — items hidden by the search are not affected.
+====
+
+=== Removing selected items
+
+Click the *Remove Selected Datasets* button in the footer.
+The button label shows the current selection count.
+The button is disabled when nothing is selected.
+
+All deletions are dispatched as a single edit event and can be undone.
+
+== What is deleted
+
+Only the `DataSet` element itself is deleted.
+The plugin does not modify the IED's `AccessPoint`, `LDevice`, `LN`, or any data attributes within the dataset.
+If the dataset contains `FCDA` children, those are removed as part of the element.

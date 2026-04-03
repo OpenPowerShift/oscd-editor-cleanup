@@ -1,0 +1,92 @@
+= Orphaned Control Blocks
+include::partial$base.adoc[]
+
+The *Orphaned Control Blocks* panel lists control block elements whose `datSet` attribute references a `DataSet` that does not exist, or that have no `datSet` attribute at all.
+
+== Background
+
+A control block (`GSEControl`, `SampledValueControl`, `LogControl`, or `ReportControl`) becomes orphaned when:
+
+* The `DataSet` it references was deleted without removing the control block.
+* The control block was created without assigning a `DataSet` (common in ICD files during early development).
+* The `datSet` attribute was manually edited and now points to a name that does not exist in the parent `LDevice`.
+
+[NOTE]
+====
+Orphaned control blocks are normal and expected in ICD (IED Capability Description) files and in dynamically-configured report control blocks.
+The filter toggles let you exclude types you do not want to clean up in a given session.
+====
+
+== Using the panel
+
+=== Filter toggles
+
+Four toggle buttons at the top of the panel control which control block types are shown:
+
+[cols="1,2,1"]
+|===
+|Toggle |Type |Default state
+
+|GOOSE icon
+|`GSEControl`
+|On
+
+|SMV icon
+|`SampledValueControl`
+|On
+
+|Log icon
+|`LogControl`
+|On
+
+|Report icon
+|`ReportControl`
+|Off
+|===
+
+`ReportControl` is hidden by default because orphaned report control blocks are especially common in ICD files.
+Enable it explicitly if you need to clean report control blocks.
+
+Click any toggle to include or exclude that type from the list.
+
+=== Communication address warning
+
+A warning icon (⚠) appears next to a control block if a matching address definition exists in the `Communication` section of the SCL document.
+This means that deleting the control block alone will leave behind a dangling address entry.
+
+Use the *Also remove SMV/GSE Address* option (see below) to remove both in a single operation.
+
+=== Also remove SMV/GSE Address
+
+This checkbox is shown in the filter row.
+When checked (the default), deleting selected control blocks will also delete the corresponding `GSE` or `SMV` address element from the `Communication` section, if one exists.
+
+Uncheck this option if you want to preserve the `Communication` entries — for example, if you plan to recreate the control block later and do not want to lose the network address configuration.
+
+=== Reviewing candidates
+
+Each row shows:
+
+* The control block name
+* The control block type (`GSEControl`, `SampledValueControl`, `LogControl`, or `ReportControl`)
+* The owning IED name, manufacturer, and type
+
+Hover over a row to reveal the edit button.
+A warning icon indicates a matching address exists in the `Communication` section.
+
+=== Searching
+
+Use the search bar to filter by control block name, type name, IED name, manufacturer, or IED type.
+See xref:searching-and-filtering.adoc[] for full details.
+
+=== Selecting and removing
+
+Check items individually or use the *Select All* checkbox in the search bar.
+Click *Remove Selected Control Blocks* to delete the selection.
+
+All changes are dispatched as a single edit event and can be undone.
+
+== What is deleted
+
+* The control block element itself (`GSEControl`, `SampledValueControl`, etc.)
+* If *Also remove SMV/GSE Address* is checked: the corresponding `GSE` or `SMV` child of the `ConnectedAP` in the `Communication` section
