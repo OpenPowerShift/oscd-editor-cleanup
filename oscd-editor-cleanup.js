@@ -68346,18 +68346,6 @@ CleanupDatasets.styles = i$6 `
       opacity: 1;
     }
 
-    section:focus {
-      box-shadow:
-        0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 3px 14px 2px rgba(0, 0, 0, 0.12),
-        0 5px 5px -3px rgba(0, 0, 0, 0.2);
-    }
-
-    section:focus-within {
-      outline-width: 2px;
-      transition: all 250ms linear;
-    }
-
     h1,
     h2,
     h3 {
@@ -68370,14 +68358,6 @@ CleanupDatasets.styles = i$6 `
       margin: 0;
       line-height: 36px;
       transition: background-color 150ms linear;
-    }
-
-    section:focus-within h1,
-    section:focus-within h2,
-    section:focus-within h3 {
-      color: var(--oscd-base3);
-      background-color: var(--oscd-primary);
-      transition: background-color 200ms linear;
     }
 
     h1 > nav,
@@ -68516,6 +68496,10 @@ CleanupDatasets.styles = i$6 `
     .filter-input {
       flex: 1;
       --md-outlined-text-field-container-shape: 20px;
+    }
+
+    .select-all-checkbox {
+      flex-shrink: 0;
     }
 
     .list-item {
@@ -69668,18 +69652,6 @@ CleanupControlBlocks.styles = i$6 `
       opacity: 1;
     }
 
-    section:focus {
-      box-shadow:
-        0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 3px 14px 2px rgba(0, 0, 0, 0.12),
-        0 5px 5px -3px rgba(0, 0, 0, 0.2);
-    }
-
-    section:focus-within {
-      outline-width: 2px;
-      transition: all 250ms linear;
-    }
-
     h1,
     h2,
     h3 {
@@ -69692,14 +69664,6 @@ CleanupControlBlocks.styles = i$6 `
       margin: 0;
       line-height: 36px;
       transition: background-color 150ms linear;
-    }
-
-    section:focus-within h1,
-    section:focus-within h2,
-    section:focus-within h3 {
-      color: var(--oscd-base3);
-      background-color: var(--oscd-primary);
-      transition: background-color 200ms linear;
     }
 
     h1 > nav,
@@ -69846,6 +69810,10 @@ CleanupControlBlocks.styles = i$6 `
       --md-outlined-text-field-container-shape: 20px;
     }
 
+    .select-all-checkbox {
+      flex-shrink: 0;
+    }
+
     .filter-buttons {
       display: flex;
       flex-direction: row;
@@ -69930,11 +69898,14 @@ CleanupControlBlocks.styles = i$6 `
       align-items: center;
       gap: 4px;
       margin-left: auto;
+      flex-shrink: 0;
       cursor: pointer;
       font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
       font-size: 12px;
       color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   `;
 __decorate([
@@ -70180,8 +70151,6 @@ class CleanupDataTypes extends ScopedElementsMixin(i$3) {
                 }
             });
             if (elementStack.length >= MAX_STACK_DEPTH) {
-                // NOTE: newLogEvent from @openscd/core/foundation/deprecated/history.js has no
-                // standalone equivalent. Log the error to console instead.
                 console.error(`${msg('Unreferenced Data Types')}: Max Stack Length Exceeded. Maximum allowed is ${MAX_STACK_DEPTH}. Datatype cleaning incomplete and file damage may have occurred.`);
             }
         }
@@ -70361,18 +70330,6 @@ CleanupDataTypes.styles = i$6 `
       opacity: 1;
     }
 
-    section:focus {
-      box-shadow:
-        0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 3px 14px 2px rgba(0, 0, 0, 0.12),
-        0 5px 5px -3px rgba(0, 0, 0, 0.2);
-    }
-
-    section:focus-within {
-      outline-width: 2px;
-      transition: all 250ms linear;
-    }
-
     h1,
     h2,
     h3 {
@@ -70385,14 +70342,6 @@ CleanupDataTypes.styles = i$6 `
       margin: 0;
       line-height: 36px;
       transition: background-color 150ms linear;
-    }
-
-    section:focus-within h1,
-    section:focus-within h2,
-    section:focus-within h3 {
-      color: var(--oscd-base3);
-      background-color: var(--oscd-primary);
-      transition: background-color 200ms linear;
     }
 
     h1 > nav,
@@ -70611,11 +70560,14 @@ CleanupDataTypes.styles = i$6 `
       align-items: center;
       gap: 4px;
       margin-left: auto;
+      flex-shrink: 0;
       cursor: pointer;
       font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
       font-size: 12px;
       color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   `;
 __decorate([
@@ -70709,51 +70661,38 @@ OscdEditorCleanup.styles = i$6 `
     .cleanup {
       display: flex;
       flex: 1;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      align-content: flex-start;
       gap: 20px;
       padding: 20px;
       min-height: 0;
-      overflow: hidden;
+      height: 100%;
       --cleanup-filter-row-height: 48px;
-    }
-
-    @media (max-width: 799px) {
-      .cleanup {
-        flex-wrap: wrap;
-        flex-direction: column;
-        overflow-y: auto;
-        scrollbar-gutter: stable;
-        scrollbar-width: thin;
-        scrollbar-color: var(--oscd-base1, #667584) transparent;
-      }
-
-      .cleanup::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      .cleanup::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      .cleanup::-webkit-scrollbar-thumb {
-        background-color: var(--oscd-base1, #667584);
-        border-radius: 3px;
-      }
-
-      .cleanup::-webkit-scrollbar-thumb:hover {
-        background-color: var(--oscd-base0, #768594);
-      }
     }
 
     cleanup-datasets,
     cleanup-control-blocks,
     cleanup-data-types {
       display: flex;
-      flex: 1;
+      flex: 1 1 320px;
       flex-direction: column;
-      min-height: 0;
+      height: 100%;
       min-width: 0;
       overflow: hidden;
+    }
+
+    @media (max-width: 799px) {
+      cleanup-datasets,
+      cleanup-control-blocks,
+      cleanup-data-types {
+        flex: 1 1 100%;
+        height: auto;
+        min-height: 480px;
+      }
+
+      .cleanup {
+        height: auto;
+      }
     }
   `;
 __decorate([
