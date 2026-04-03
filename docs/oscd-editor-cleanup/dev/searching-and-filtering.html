@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Searching and Filtering :: OpenSCD Cleanup Plugin</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openpowershift.github.io/oscd-editor-cleanup/docs">OpenSCD Cleanup Plugin</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://sysconex.openpowershift.com/" target="_blank" rel="noopener">Try Sysconex ↗</a>
+        <a class="navbar-item" href="https://github.com/openpowershift/oscd-editor-cleanup/issues" target="_blank" rel="noopener">Log an Issue ↗</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="oscd-editor-cleanup" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="introduction.html">Cleanup Plugin</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-datasets.html">Unreferenced Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="orphaned-control-blocks.html">Orphaned Control Blocks</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-data-types.html">Unreferenced Data Types</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="searching-and-filtering.html">Searching and Filtering</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cleanup Plugin</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="introduction.html">Cleanup Plugin</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="introduction.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="introduction.html">Cleanup Plugin</a></li>
+    <li><a href="searching-and-filtering.html">Searching and Filtering</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/main/modules/ROOT/pages/searching-and-filtering.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Searching and Filtering</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each of the three cleanup panels provides a consistent set of controls for narrowing down the list of candidates before selecting and deleting them.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_search_bar"><a class="anchor" href="#_search_bar"></a>1. Search bar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The search bar filters the list in real time as you type.
+It matches against multiple fields simultaneously:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Panel</th>
+<th class="tableblock halign-left valign-top">Fields searched</th>
+<th class="tableblock halign-left valign-top">Example query</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unreferenced Datasets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DataSet name, IED name, manufacturer, IED type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SIEMENS</code> to find all datasets from Siemens IEDs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Orphaned Control Blocks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Control block name, type name, IED name, manufacturer, IED type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GSEControl</code> to find only GOOSE control blocks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unreferenced Data Types</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type <code>id</code>, type category, secondary description (lnClass / cdc / desc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XCBR</code> to find all circuit-breaker Logical Node types</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The search is case-insensitive.
+Clear the field to return to the full unfiltered list.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_type_filter_toggles"><a class="anchor" href="#_type_filter_toggles"></a>2. Type filter toggles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Orphaned Control Blocks</strong> and <strong>Unreferenced Data Types</strong> panels both have a row of icon toggle buttons that include or exclude specific element types.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Active toggles are highlighted in the theme&#8217;s secondary colour.</p>
+</li>
+<li>
+<p>Inactive toggles appear muted.</p>
+</li>
+<li>
+<p>Click a toggle to flip its state.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Filter toggles work in combination with the search bar — both filters are applied simultaneously.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_select_all"><a class="anchor" href="#_select_all"></a>3. Select All</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The checkbox to the left of the search bar selects or deselects all items currently visible in the list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Select All</strong> respects the current search and filter state.
+If a search term is active, only the matching items are selected — items hidden by the filter are not affected.
+This makes it easy to select and delete all items of a particular IED or type in one step: filter, select all, delete.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recommended_workflow_for_large_files"><a class="anchor" href="#_recommended_workflow_for_large_files"></a>4. Recommended workflow for large files</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Apply a type filter or search term to scope the list to a manageable subset.</p>
+</li>
+<li>
+<p>Review the remaining rows to confirm they are safe to remove.</p>
+</li>
+<li>
+<p>Use <strong>Select All</strong> to mark the visible items.</p>
+</li>
+<li>
+<p>Click the delete button.</p>
+</li>
+<li>
+<p>Repeat for the next category or search term.</p>
+</li>
+<li>
+<p>Use Ctrl+Z (undo) at any point to reverse a deletion.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

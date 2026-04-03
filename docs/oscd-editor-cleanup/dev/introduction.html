@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Introduction :: OpenSCD Cleanup Plugin</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openpowershift.github.io/oscd-editor-cleanup/docs">OpenSCD Cleanup Plugin</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://sysconex.openpowershift.com/" target="_blank" rel="noopener">Try Sysconex ↗</a>
+        <a class="navbar-item" href="https://github.com/openpowershift/oscd-editor-cleanup/issues" target="_blank" rel="noopener">Log an Issue ↗</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="oscd-editor-cleanup" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="introduction.html">Cleanup Plugin</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-datasets.html">Unreferenced Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="orphaned-control-blocks.html">Orphaned Control Blocks</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-data-types.html">Unreferenced Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="searching-and-filtering.html">Searching and Filtering</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cleanup Plugin</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="introduction.html">Cleanup Plugin</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="introduction.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="introduction.html" class="home-link is-current"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="introduction.html">Cleanup Plugin</a></li>
+    <li><a href="introduction.html">Introduction</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/main/modules/ROOT/pages/introduction.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Introduction</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Cleanup plugin helps you maintain clean and valid SCL (Substation Configuration Language) files by identifying and removing elements that have become unreferenced over the lifecycle of an IEC 61850 configuration project.</p>
+</div>
+<div class="paragraph">
+<p>Over time, as IEDs are added, removed, or reconfigured, SCL files accumulate stale entries — DataSets no longer pointed to by any control block, control blocks whose DataSets were deleted, and data type definitions that no longer match any Logical Node.
+Leaving these in place does not cause failures, but it increases file size, makes the document harder to reason about, and can trigger false positives in validation tools.</p>
+</div>
+<div class="paragraph">
+<p>The plugin provides three independent panels, each targeting a distinct category of unreferenced content:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Panel</th>
+<th class="tableblock halign-left valign-top">What it removes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="unreferenced-datasets.html" class="xref page">Unreferenced Datasets</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DataSet</code> elements not referenced by any <code>GSEControl</code>, <code>SampledValueControl</code>, <code>LogControl</code>, or <code>ReportControl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="orphaned-control-blocks.html" class="xref page">Orphaned Control Blocks</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GSEControl</code>, <code>SampledValueControl</code>, <code>LogControl</code>, and <code>ReportControl</code> elements whose <code>datSet</code> attribute points to a non-existent <code>DataSet</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="unreferenced-data-types.html" class="xref page">Unreferenced Data Types</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LNodeType</code>, <code>DOType</code>, <code>DAType</code>, and <code>EnumType</code> entries in <code>DataTypeTemplates</code> not referenced by any Logical Node or other Data Type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you open a document in OpenSCD Shell with this plugin active, each panel immediately analyses the loaded SCL and displays a list of candidates for removal.
+You can review each entry, search or filter the list to find what you are looking for, select individual items or all at once, and then delete the selection in a single operation.
+All changes are dispatched as edit events and can be undone with the standard undo mechanism.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_when_to_use_this_plugin"><a class="anchor" href="#_when_to_use_this_plugin"></a>When to use this plugin</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>After removing IEDs or reconfiguring communication mappings</p>
+</li>
+<li>
+<p>Before exporting a final SCL file for commissioning or delivery</p>
+</li>
+<li>
+<p>As part of a routine file-hygiene pass in a configuration review workflow</p>
+</li>
+<li>
+<p>When a validation tool reports unexpected or excessive data type definitions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_limitations"><a class="anchor" href="#_limitations"></a>Limitations</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The plugin operates on public SCL elements only — private extensions are not examined.</p>
+</li>
+<li>
+<p>The plugin does not analyse inter-file references; it works on the currently loaded document.</p>
+</li>
+<li>
+<p>Undo is supported through the standard OpenSCD edit history, but very large bulk deletions should be reviewed carefully before committing.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://openpowershift.github.io/oscd-editor-cleanup">Try the live demo</a> to see the plugin in action before installing it.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

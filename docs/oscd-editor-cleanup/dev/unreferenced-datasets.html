@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Unreferenced Datasets :: OpenSCD Cleanup Plugin</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openpowershift.github.io/oscd-editor-cleanup/docs">OpenSCD Cleanup Plugin</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://sysconex.openpowershift.com/" target="_blank" rel="noopener">Try Sysconex ↗</a>
+        <a class="navbar-item" href="https://github.com/openpowershift/oscd-editor-cleanup/issues" target="_blank" rel="noopener">Log an Issue ↗</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="oscd-editor-cleanup" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="introduction.html">Cleanup Plugin</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="unreferenced-datasets.html">Unreferenced Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="orphaned-control-blocks.html">Orphaned Control Blocks</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-data-types.html">Unreferenced Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="searching-and-filtering.html">Searching and Filtering</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cleanup Plugin</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="introduction.html">Cleanup Plugin</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="introduction.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="introduction.html">Cleanup Plugin</a></li>
+    <li><a href="unreferenced-datasets.html">Unreferenced Datasets</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/main/modules/ROOT/pages/unreferenced-datasets.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Unreferenced Datasets</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Unreferenced Datasets</strong> panel lists every <code>DataSet</code> element in the SCL document that is not referenced by any control block.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_background"><a class="anchor" href="#_background"></a>1. Background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In IEC 61850, a <code>DataSet</code> collects data attributes together so that a control block can publish or log them.
+A <code>DataSet</code> becomes unreferenced when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The control block that used it (<code>GSEControl</code>, <code>SampledValueControl</code>, <code>LogControl</code>, or <code>ReportControl</code>) was deleted, but the <code>DataSet</code> itself was not.</p>
+</li>
+<li>
+<p>The <code>datSet</code> attribute of a control block was changed to point to a different <code>DataSet</code>, leaving the old one without a subscriber.</p>
+</li>
+<li>
+<p>A <code>DataSet</code> was created in anticipation of future use but never assigned to a control block.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unreferenced <code>DataSet</code> elements increase file size and can confuse engineering tools that enumerate datasets for subscription.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_panel"><a class="anchor" href="#_using_the_panel"></a>2. Using the panel</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_reviewing_candidates"><a class="anchor" href="#_reviewing_candidates"></a>2.1. Reviewing candidates</h3>
+<div class="paragraph">
+<p>Each row in the list shows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>DataSet</code> name</p>
+</li>
+<li>
+<p>The IED that owns it, including manufacturer and type</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hover over a row to reveal the edit button (pencil icon).
+Click it to open the SCL edit dialog for that element if you want to inspect or modify it before deciding whether to delete it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_searching"><a class="anchor" href="#_searching"></a>2.2. Searching</h3>
+<div class="paragraph">
+<p>Use the search bar at the top of the panel to filter the list by any combination of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DataSet name</p>
+</li>
+<li>
+<p>IED name</p>
+</li>
+<li>
+<p>Manufacturer</p>
+</li>
+<li>
+<p>IED type</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="searching-and-filtering.html" class="xref page">Searching and Filtering</a> for full details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selecting_items_for_removal"><a class="anchor" href="#_selecting_items_for_removal"></a>2.3. Selecting items for removal</h3>
+<div class="paragraph">
+<p>Check the checkbox on any row to mark it for deletion.
+Use the checkbox in the search bar to select or deselect all currently visible items at once.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you apply a search filter first and then use <em>Select All</em>, only the filtered results are selected — items hidden by the search are not affected.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removing_selected_items"><a class="anchor" href="#_removing_selected_items"></a>2.4. Removing selected items</h3>
+<div class="paragraph">
+<p>Click the <strong>Remove Selected Datasets</strong> button in the footer.
+The button label shows the current selection count.
+The button is disabled when nothing is selected.</p>
+</div>
+<div class="paragraph">
+<p>All deletions are dispatched as a single edit event and can be undone.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_deleted"><a class="anchor" href="#_what_is_deleted"></a>3. What is deleted</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Only the <code>DataSet</code> element itself is deleted.
+The plugin does not modify the IED&#8217;s <code>AccessPoint</code>, <code>LDevice</code>, <code>LN</code>, or any data attributes within the dataset.
+If the dataset contains <code>FCDA</code> children, those are removed as part of the element.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Installation :: OpenSCD Cleanup Plugin</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://openpowershift.github.io/oscd-editor-cleanup/docs">OpenSCD Cleanup Plugin</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://sysconex.openpowershift.com/" target="_blank" rel="noopener">Try Sysconex ↗</a>
+        <a class="navbar-item" href="https://github.com/openpowershift/oscd-editor-cleanup/issues" target="_blank" rel="noopener">Log an Issue ↗</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="oscd-editor-cleanup" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="introduction.html">Cleanup Plugin</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-datasets.html">Unreferenced Datasets</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="orphaned-control-blocks.html">Orphaned Control Blocks</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="unreferenced-data-types.html">Unreferenced Data Types</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="searching-and-filtering.html">Searching and Filtering</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Cleanup Plugin</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="introduction.html">Cleanup Plugin</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="introduction.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="introduction.html">Cleanup Plugin</a></li>
+    <li><a href="installation.html">Installation</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/main/modules/ROOT/pages/installation.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Installation</h1>
+<div class="sect1">
+<h2 id="_try_it_online"><a class="anchor" href="#_try_it_online"></a>1. Try it online</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The fastest way to evaluate the plugin is to use the <a href="https://openpowershift.github.io/oscd-editor-cleanup">live demo</a>.
+The demo loads a sample SCD file automatically and activates the plugin.
+No installation is required.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_with_openscd_shell_via_url"><a class="anchor" href="#_using_with_openscd_shell_via_url"></a>2. Using with OpenSCD Shell (via URL)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are running your own <a href="https://github.com/OMICRONEnergyOSS/oscd-shell">OpenSCD Shell</a> instance, you can load this plugin directly from the continuous integration build:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">const editor = document.querySelector('oscd-shell');
+const plugins = {
+  editor: [
+    {
+      name: 'Cleanup',
+      translations: { de: 'Bereinigung' },
+      icon: 'cleaning_services',
+      requireDoc: true,
+      src: 'https://openpowershift.github.io/oscd-editor-cleanup/oscd-editor-cleanup.js',
+    },
+  ],
+};
+editor.plugins = plugins;</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The CI bundle always reflects the latest commit on the <code>main</code> branch and may include unreleased changes.
+For production use, pin to a released npm package (see below).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_from_npm"><a class="anchor" href="#_installing_from_npm"></a>3. Installing from npm</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For production distributions, install the released package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">npm install @omicronenergy/oscd-editor-cleanup</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then register the plugin with the shell:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">import OscdEditorCleanup from '@omicronenergy/oscd-editor-cleanup';
+
+const { registry } = document.querySelector('oscd-shell');
+registry.define('oscd-editor-cleanup', OscdEditorCleanup);
+
+const editor = document.querySelector('oscd-shell');
+const plugins = {
+  editor: [
+    {
+      name: 'Cleanup',
+      translations: { de: 'Bereinigung' },
+      icon: 'cleaning_services',
+      requireDoc: true,
+      tagName: 'oscd-editor-cleanup',
+    },
+  ],
+};
+editor.plugins = plugins;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scoped_custom_elements"><a class="anchor" href="#_scoped_custom_elements"></a>3.1. Scoped custom elements</h3>
+<div class="paragraph">
+<p>This plugin uses <code>@open-wc/scoped-elements</code> and does <strong>not</strong> register itself in the global custom element registry.
+You must use the <code>registry.define</code> pattern shown above, or the plugin will not render.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plugin_properties"><a class="anchor" href="#_plugin_properties"></a>4. Plugin properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The plugin accepts the following properties on its element:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XMLDocument</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The loaded SCL document. Set automatically by OpenSCD Shell.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unknown</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opaque version token used by the shell to signal document changes and trigger re-renders.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_peer_dependencies"><a class="anchor" href="#_peer_dependencies"></a>5. Peer dependencies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The plugin is built against and expects the following peer dependencies to be provided by the host application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "@openscd/scl-lib": "^2.0.0",
+  "@openscd/oscd-api": "^0.1.0",
+  "@omicronenergy/oscd-ui": "^0.0.11",
+  "@omicronenergy/oscd-scl-dialogs": "^0.0.12",
+  "lit": "^3.0.0"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

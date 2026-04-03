@@ -68283,7 +68283,8 @@ class CleanupDatasets extends ScopedElementsMixin(i$3) {
           <h1
             title="${msg('Unreferenced Datasets')} (${unreferencedDataSets.length})"
           >
-            ${msg('Unreferenced Datasets')} (${unreferencedDataSets.length})
+            ${msg('Unreferenced Datasets')}
+            <span class="count">(${unreferencedDataSets.length})</span>
           </h1>
           <p class="subtitle">
             ${msg('Datasets not referenced by any control block')}
@@ -68292,23 +68293,23 @@ class CleanupDatasets extends ScopedElementsMixin(i$3) {
             class="filter-buttons filter-placeholder"
             aria-hidden="true"
           ></div>
-          <oscd-outlined-text-field
-            class="filter-input"
-            placeholder="Search"
-            .value=${this.searchTerm}
-            @input=${(e) => {
-            this.searchTerm = e.target.value;
-        }}
-          >
-            <oscd-icon slot="trailing-icon">search</oscd-icon>
-          </oscd-outlined-text-field>
-          <div class="select-all-row">
+          <div class="search-row">
             <oscd-checkbox
               class="select-all-checkbox"
+              title="Select all"
               ?checked=${this.isAllSelected}
               @change=${() => this.toggleSelectAll()}
             ></oscd-checkbox>
-            <span class="select-all-label">Select All</span>
+            <oscd-outlined-text-field
+              class="filter-input"
+              placeholder="Search"
+              .value=${this.searchTerm}
+              @input=${(e) => {
+            this.searchTerm = e.target.value;
+        }}
+            >
+              <oscd-icon slot="trailing-icon">search</oscd-icon>
+            </oscd-outlined-text-field>
           </div>
         </header>
         <div class="dataSetList check-list">
@@ -68390,10 +68391,16 @@ CleanupDatasets.styles = i$6 `
       font-size: 12px;
       font-weight: 400;
       color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
-      margin: 0 0 6px;
+      margin: 6px 0 14px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .count {
+      font-size: 0.6em;
+      font-weight: 400;
+      opacity: 0.7;
     }
 
     section {
@@ -68431,8 +68438,7 @@ CleanupDatasets.styles = i$6 `
         grid-template-rows:
           36px
           auto
-          var(--cleanup-filter-row-height, 44px)
-          auto
+          var(--cleanup-filter-row-height, 48px)
           auto;
       }
     }
@@ -68472,6 +68478,26 @@ CleanupDatasets.styles = i$6 `
       flex: 1;
       overflow-y: auto;
       min-height: 0;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--oscd-base1, #667584) transparent;
+    }
+
+    .check-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .check-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .check-list::-webkit-scrollbar-thumb {
+      background-color: var(--oscd-base1, #667584);
+      border-radius: 3px;
+    }
+
+    .check-list::-webkit-scrollbar-thumb:hover {
+      background-color: var(--oscd-base0, #768594);
     }
 
     .filter-placeholder {
@@ -68479,21 +68505,17 @@ CleanupDatasets.styles = i$6 `
       min-height: 40px;
     }
 
-    .filter-input {
-      width: 100%;
-      margin-bottom: 4px;
-    }
-
-    .select-all-row {
+    .search-row {
       display: flex;
       align-items: center;
-      padding: 4px 8px;
-      border-bottom: 1px solid var(--oscd-base00, #ccc);
+      gap: 4px;
+      margin-bottom: 4px;
+      padding: 0 8px;
     }
 
-    .select-all-label {
-      margin-left: 8px;
-      font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
+    .filter-input {
+      flex: 1;
+      --md-outlined-text-field-container-shape: 20px;
     }
 
     .list-item {
@@ -69568,14 +69590,14 @@ class CleanupControlBlocks extends ScopedElementsMixin(i$3) {
             }
         });
         this.unreferencedControls = identitySort(unreferencedCBs);
-        const disabled = this.selectedIndices.size === 0;
         return x `
       <div class="content">
         <header>
           <h1
             title="${msg('Orphaned Control Blocks')} (${unreferencedCBs.length})"
           >
-            ${msg('Orphaned Control Blocks')} (${unreferencedCBs.length})
+            ${msg('Orphaned Control Blocks')}
+            <span class="count">(${unreferencedCBs.length})</span>
           </h1>
           <p class="subtitle">
             ${msg('Control blocks without a DataSet reference - normal in ICD files and for dynamic reports.')}
@@ -69585,41 +69607,38 @@ class CleanupControlBlocks extends ScopedElementsMixin(i$3) {
             ${this.renderFilterIconButton('ReportControl', false)}
             ${this.renderFilterIconButton('GSEControl')}
             ${this.renderFilterIconButton('SampledValueControl')}
+            <label class="option-label">
+              <oscd-checkbox
+                class="cleanupAddressCheckbox"
+                checked
+              ></oscd-checkbox>
+              ${msg('Also remove SMV/GSE Address')}
+            </label>
           </div>
-          <oscd-outlined-text-field
-            class="filter-input"
-            placeholder="Search"
-            .value=${this.searchTerm}
-            @input=${(e) => {
-            this.searchTerm = e.target.value;
-        }}
-          >
-            <oscd-icon slot="trailing-icon">search</oscd-icon>
-          </oscd-outlined-text-field>
-          <div class="select-all-row">
+          <div class="search-row">
             <oscd-checkbox
               class="select-all-checkbox"
+              title="Select all"
               ?checked=${this.isAllSelected}
               @change=${() => this.toggleSelectAll()}
             ></oscd-checkbox>
-            <span class="select-all-label">Select All</span>
+            <oscd-outlined-text-field
+              class="filter-input"
+              placeholder="Search"
+              .value=${this.searchTerm}
+              @input=${(e) => {
+            this.searchTerm = e.target.value;
+        }}
+            >
+              <oscd-icon slot="trailing-icon">search</oscd-icon>
+            </oscd-outlined-text-field>
           </div>
         </header>
         <div class="cleanupList check-list">
           ${this.filteredControls.map(({ item, index }) => this.renderListItem(item, index))}
         </div>
       </div>
-      <footer>
-        ${this.renderDeleteButton()}
-        <label class="removeFromCommunication ${disabled ? 'disabled' : ''}">
-          <oscd-checkbox
-            class="cleanupAddressCheckbox"
-            checked
-            ?disabled=${disabled}
-          ></oscd-checkbox>
-          ${msg('Also remove SMV/GSE Address')}
-        </label>
-      </footer>
+      <footer>${this.renderDeleteButton()}</footer>
     `;
     }
     render() {
@@ -69694,10 +69713,16 @@ CleanupControlBlocks.styles = i$6 `
       font-size: 12px;
       font-weight: 400;
       color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
-      margin: 0 0 6px;
+      margin: 6px 0 14px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .count {
+      font-size: 0.6em;
+      font-weight: 400;
+      opacity: 0.7;
     }
 
     section {
@@ -69735,8 +69760,7 @@ CleanupControlBlocks.styles = i$6 `
         grid-template-rows:
           36px
           auto
-          var(--cleanup-filter-row-height, 44px)
-          auto
+          var(--cleanup-filter-row-height, 48px)
           auto;
       }
     }
@@ -69787,11 +69811,39 @@ CleanupControlBlocks.styles = i$6 `
       flex: 1;
       overflow-y: auto;
       min-height: 0;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--oscd-base1, #667584) transparent;
+    }
+
+    .check-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .check-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .check-list::-webkit-scrollbar-thumb {
+      background-color: var(--oscd-base1, #667584);
+      border-radius: 3px;
+    }
+
+    .check-list::-webkit-scrollbar-thumb:hover {
+      background-color: var(--oscd-base0, #768594);
+    }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+      padding: 0 8px;
     }
 
     .filter-input {
-      width: 100%;
-      margin-bottom: 4px;
+      flex: 1;
+      --md-outlined-text-field-container-shape: 20px;
     }
 
     .filter-buttons {
@@ -69799,7 +69851,7 @@ CleanupControlBlocks.styles = i$6 `
       flex-direction: row;
       flex-wrap: wrap;
       gap: 4px;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
     .filter-toggle {
@@ -69819,18 +69871,6 @@ CleanupControlBlocks.styles = i$6 `
       border-color: var(--oscd-secondary);
       color: var(--oscd-base3);
       opacity: 1;
-    }
-
-    .select-all-row {
-      display: flex;
-      align-items: center;
-      padding: 4px 8px;
-      border-bottom: 1px solid var(--oscd-base00, #ccc);
-    }
-
-    .select-all-label {
-      margin-left: 8px;
-      font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
     }
 
     .list-item {
@@ -69885,17 +69925,16 @@ CleanupControlBlocks.styles = i$6 `
       text-overflow: ellipsis;
     }
 
-    .removeFromCommunication {
+    .option-label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
+      margin-left: auto;
       cursor: pointer;
       font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
-    }
-
-    .removeFromCommunication.disabled {
-      opacity: 0.38;
-      cursor: default;
+      font-size: 12px;
+      color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
+      white-space: nowrap;
     }
   `;
 __decorate([
@@ -70243,7 +70282,6 @@ class CleanupDataTypes extends ScopedElementsMixin(i$3) {
     }
     renderUnreferencedDataTypes() {
         this.unreferencedDataTypes = this.getUnusedTypes();
-        const disabled = this.selectedIndices.size === 0;
         return x `
       <div class="content">
         <header>
@@ -70252,7 +70290,7 @@ class CleanupDataTypes extends ScopedElementsMixin(i$3) {
             .unreferencedDataTypes.length})"
           >
             ${msg('Unreferenced Data Types')}
-            (${this.unreferencedDataTypes.length})
+            <span class="count">(${this.unreferencedDataTypes.length})</span>
           </h1>
           <p class="subtitle">
             ${msg('Data Types not referenced by any Logical Node or other Data Type')}
@@ -70262,41 +70300,38 @@ class CleanupDataTypes extends ScopedElementsMixin(i$3) {
             ${this.renderFilterIconButton('DOType')}
             ${this.renderFilterIconButton('DAType')}
             ${this.renderFilterIconButton('EnumType')}
+            <label class="option-label">
+              <oscd-checkbox
+                checked
+                class="clean-sub-types-checkbox"
+              ></oscd-checkbox>
+              ${msg('Also remove subtypes')}
+            </label>
           </div>
-          <oscd-outlined-text-field
-            class="filter-input"
-            placeholder="Search"
-            .value=${this.searchTerm}
-            @input=${(e) => {
-            this.searchTerm = e.target.value;
-        }}
-          >
-            <oscd-icon slot="trailing-icon">search</oscd-icon>
-          </oscd-outlined-text-field>
-          <div class="select-all-row">
+          <div class="search-row">
             <oscd-checkbox
               class="select-all-checkbox"
+              title="Select all"
               ?checked=${this.isAllSelected}
               @change=${() => this.toggleSelectAll()}
             ></oscd-checkbox>
-            <span class="select-all-label">Select All</span>
+            <oscd-outlined-text-field
+              class="filter-input"
+              placeholder="Search"
+              .value=${this.searchTerm}
+              @input=${(e) => {
+            this.searchTerm = e.target.value;
+        }}
+            >
+              <oscd-icon slot="trailing-icon">search</oscd-icon>
+            </oscd-outlined-text-field>
           </div>
         </header>
         <div class="cleanup-list check-list">
           ${this.filteredTypes.map(({ item, index }) => this.renderListItem(item, index))}
         </div>
       </div>
-      <footer>
-        ${this.renderDeleteButton()}
-        <label class="remove-from-communication ${disabled ? 'disabled' : ''}">
-          <oscd-checkbox
-            checked
-            ?disabled=${disabled}
-            class="clean-sub-types-checkbox"
-          ></oscd-checkbox>
-          ${msg('Also remove subtypes')}
-        </label>
-      </footer>
+      <footer>${this.renderDeleteButton()}</footer>
     `;
     }
     render() {
@@ -70371,10 +70406,16 @@ CleanupDataTypes.styles = i$6 `
       font-size: 12px;
       font-weight: 400;
       color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
-      margin: 0 0 6px;
+      margin: 6px 0 14px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .count {
+      font-size: 0.6em;
+      font-weight: 400;
+      opacity: 0.7;
     }
 
     section {
@@ -70412,8 +70453,7 @@ CleanupDataTypes.styles = i$6 `
         grid-template-rows:
           36px
           auto
-          var(--cleanup-filter-row-height, 44px)
-          auto
+          var(--cleanup-filter-row-height, 48px)
           auto;
       }
     }
@@ -70455,11 +70495,39 @@ CleanupDataTypes.styles = i$6 `
       flex: 1;
       overflow-y: auto;
       min-height: 0;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--oscd-base1, #667584) transparent;
+    }
+
+    .check-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .check-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .check-list::-webkit-scrollbar-thumb {
+      background-color: var(--oscd-base1, #667584);
+      border-radius: 3px;
+    }
+
+    .check-list::-webkit-scrollbar-thumb:hover {
+      background-color: var(--oscd-base0, #768594);
+    }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+      padding: 0 8px;
     }
 
     .filter-input {
-      width: 100%;
-      margin-bottom: 4px;
+      flex: 1;
+      --md-outlined-text-field-container-shape: 20px;
     }
 
     .filter-buttons {
@@ -70467,7 +70535,7 @@ CleanupDataTypes.styles = i$6 `
       flex-direction: row;
       flex-wrap: wrap;
       gap: 4px;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
     .filter-toggle {
@@ -70487,18 +70555,6 @@ CleanupDataTypes.styles = i$6 `
       border-color: var(--oscd-secondary);
       color: var(--oscd-base3);
       opacity: 1;
-    }
-
-    .select-all-row {
-      display: flex;
-      align-items: center;
-      padding: 4px 8px;
-      border-bottom: 1px solid var(--oscd-base00, #ccc);
-    }
-
-    .select-all-label {
-      margin-left: 8px;
-      font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
     }
 
     .list-item {
@@ -70550,17 +70606,16 @@ CleanupDataTypes.styles = i$6 `
       text-overflow: ellipsis;
     }
 
-    .remove-from-communication {
+    .option-label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
+      margin-left: auto;
       cursor: pointer;
       font-family: var(--oscd-text-font, 'Roboto'), sans-serif;
-    }
-
-    .remove-from-communication.disabled {
-      opacity: 0.38;
-      cursor: default;
+      font-size: 12px;
+      color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
+      white-space: nowrap;
     }
   `;
 __decorate([
@@ -70659,6 +70714,7 @@ OscdEditorCleanup.styles = i$6 `
       padding: 20px;
       min-height: 0;
       overflow: hidden;
+      --cleanup-filter-row-height: 48px;
     }
 
     @media (max-width: 799px) {
@@ -70666,6 +70722,26 @@ OscdEditorCleanup.styles = i$6 `
         flex-wrap: wrap;
         flex-direction: column;
         overflow-y: auto;
+        scrollbar-gutter: stable;
+        scrollbar-width: thin;
+        scrollbar-color: var(--oscd-base1, #667584) transparent;
+      }
+
+      .cleanup::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .cleanup::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .cleanup::-webkit-scrollbar-thumb {
+        background-color: var(--oscd-base1, #667584);
+        border-radius: 3px;
+      }
+
+      .cleanup::-webkit-scrollbar-thumb:hover {
+        background-color: var(--oscd-base0, #768594);
       }
     }
 
