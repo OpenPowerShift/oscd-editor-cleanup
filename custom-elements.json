@@ -60,6 +60,19 @@
             },
             {
               "kind": "field",
+              "name": "helpOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "sclDialogs",
               "type": {
                 "text": "OscdSclDialogs"
@@ -74,6 +87,35 @@
               "kind": "field",
               "name": "handleEditDialogEvent",
               "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "DOCS_URL",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "static": true,
+              "readonly": true,
+              "default": "'docs/oscd-editor-cleanup/dev/introduction.html'",
               "inheritedFrom": {
                 "name": "OscdEditorCleanup",
                 "module": "src/oscd-editor-cleanup.ts"
@@ -141,6 +183,19 @@
             },
             {
               "kind": "field",
+              "name": "helpOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "sclDialogs",
               "type": {
                 "text": "OscdSclDialogs"
@@ -155,6 +210,35 @@
               "kind": "field",
               "name": "handleEditDialogEvent",
               "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "DOCS_URL",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "static": true,
+              "readonly": true,
+              "default": "'docs/oscd-editor-cleanup/dev/introduction.html'",
               "inheritedFrom": {
                 "name": "OscdEditorCleanup",
                 "module": "src/oscd-editor-cleanup.ts"
@@ -276,7 +360,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ 'cleanup-datasets': CleanupDatasets, 'cleanup-control-blocks': CleanupControlBlocks, 'cleanup-data-types': CleanupDataTypes, 'oscd-scl-dialogs': OscdSclDialogs, }"
+              "default": "{ 'cleanup-datasets': CleanupDatasets, 'cleanup-control-blocks': CleanupControlBlocks, 'cleanup-data-types': CleanupDataTypes, 'oscd-scl-dialogs': OscdSclDialogs, 'oscd-dialog': OscdDialog, 'oscd-icon-button': OscdIconButton, 'oscd-icon': OscdIcon, 'oscd-filled-button': OscdFilledButton, }"
             },
             {
               "kind": "field",
@@ -302,6 +386,15 @@
             },
             {
               "kind": "field",
+              "name": "helpOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "sclDialogs",
               "type": {
                 "text": "OscdSclDialogs"
@@ -312,6 +405,27 @@
               "kind": "field",
               "name": "handleEditDialogEvent",
               "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "DOCS_URL",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "static": true,
+              "readonly": true,
+              "default": "'docs/oscd-editor-cleanup/dev/introduction.html'"
             }
           ],
           "mixins": [

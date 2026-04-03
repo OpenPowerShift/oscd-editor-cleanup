@@ -152,6 +152,92 @@ describe('OscdEditorCleanup', () => {
     expect(dispatchCount).to.equal(0);
   });
 
+  describe('container layout', () => {
+    it('each container stretches to full height on desktop so the footer button reaches the bottom', async () => {
+      const parent = await fixture<OscdEditorCleanupFixtureEmpty>(
+        html`<cleanup-fixture-empty
+          style="display:flex;width:1200px;height:800px;"
+        ></cleanup-fixture-empty>`,
+      );
+      const element = parent.shadowRoot!.querySelector(
+        'oscd-editor-cleanup',
+      ) as OscdEditorCleanup;
+      element.doc = doc;
+      await element.updateComplete;
+
+      const cleanup = element.shadowRoot!.querySelector(
+        '.cleanup',
+      ) as HTMLElement;
+      const dataset = cleanup.querySelector('cleanup-datasets') as HTMLElement;
+
+      // The container must fill the available height — not just wrap its content.
+      // If height collapses to content, justify-content:space-between on the
+      // inner section has no room to push the footer down.
+      // .cleanup has padding: 20px top + 20px bottom, so children fill the
+      // content box: cleanup.offsetHeight - 40.
+      expect(dataset.offsetHeight).to.be.greaterThan(0);
+      expect(dataset.offsetHeight).to.equal(cleanup.offsetHeight - 40);
+    });
+
+    it('all three containers are always visible at intermediate widths', async () => {
+      // Regression: at widths between ~800px and ~1040px, flex-wrap:wrap would
+      // place the third container on a second row which overflow:hidden then clips.
+      const parent = await fixture<OscdEditorCleanupFixtureEmpty>(
+        html`<cleanup-fixture-empty
+          style="display:flex;width:900px;height:800px;"
+        ></cleanup-fixture-empty>`,
+      );
+      const element = parent.shadowRoot!.querySelector(
+        'oscd-editor-cleanup',
+      ) as OscdEditorCleanup;
+      element.doc = doc;
+      await element.updateComplete;
+
+      const cleanup = element.shadowRoot!.querySelector(
+        '.cleanup',
+      ) as HTMLElement;
+      const cleanupRect = cleanup.getBoundingClientRect();
+
+      for (const tag of [
+        'cleanup-datasets',
+        'cleanup-control-blocks',
+        'cleanup-data-types',
+      ]) {
+        const container = cleanup.querySelector(tag) as HTMLElement;
+        const rect = container.getBoundingClientRect();
+        expect(rect.top).to.be.greaterThanOrEqual(cleanupRect.top);
+        expect(rect.bottom).to.be.lessThanOrEqual(
+          cleanupRect.bottom,
+          `${tag} is clipped below the cleanup container`,
+        );
+        expect(rect.width).to.be.greaterThan(0, `${tag} has zero width`);
+      }
+    });
+
+    it('on desktop the cleanup container clips overflow so no container is hidden behind a scrollbar', async () => {
+      // Media queries use viewport width, not element width, so this test
+      // verifies the desktop (non-mobile) computed style.
+      const parent = await fixture<OscdEditorCleanupFixtureEmpty>(
+        html`<cleanup-fixture-empty
+          style="display:flex;width:1200px;height:800px;"
+        ></cleanup-fixture-empty>`,
+      );
+      const element = parent.shadowRoot!.querySelector(
+        'oscd-editor-cleanup',
+      ) as OscdEditorCleanup;
+      element.doc = doc;
+      await element.updateComplete;
+
+      const cleanup = element.shadowRoot!.querySelector(
+        '.cleanup',
+      ) as HTMLElement;
+      const cleanupStyle = getComputedStyle(cleanup);
+
+      // On desktop overflow is hidden so containers never clip off-screen.
+      expect(cleanupStyle.overflow).to.equal('hidden');
+    });
+  });
+
   it('dispatches oscd-edit-v2 when OscdEditDialogEvents.EDIT_EVENT fires with edits', async () => {
     const parent = await fixture<OscdEditorCleanupFixtureWithEdits>(
       html`<cleanup-fixture-with-edits></cleanup-fixture-with-edits>`,

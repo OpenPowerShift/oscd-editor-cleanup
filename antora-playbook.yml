@@ -10,6 +10,10 @@ content:
       branches: HEAD
       edit_url: 'https://github.com/OMICRONEnergyOSS/oscd-editor-cleanup/edit/{refname}/{path}'
 
+asciidoc:
+  attributes:
+    standalone-help: ''
+
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
