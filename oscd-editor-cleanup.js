@@ -69511,7 +69511,6 @@ class CleanupControlBlocks extends ScopedElementsMixin(i$3) {
               class="editItem"
               @click=${(e) => {
             e.stopPropagation();
-            console.log(controlBlock);
             e.target.dispatchEvent(newEditDialogEditEvent(controlBlock));
         }}
             >
@@ -69817,7 +69816,7 @@ CleanupControlBlocks.styles = i$6 `
     .filter-buttons {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 4px;
       margin-bottom: 10px;
     }
@@ -70479,10 +70478,14 @@ CleanupDataTypes.styles = i$6 `
       --md-outlined-text-field-container-shape: 20px;
     }
 
+    .select-all-checkbox {
+      flex-shrink: 0;
+    }
+
     .filter-buttons {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 4px;
       margin-bottom: 10px;
     }
@@ -70666,8 +70669,13 @@ OscdEditorCleanup.styles = i$6 `
       gap: 20px;
       padding: 20px;
       min-height: 0;
-      height: 100%;
+      height: auto;
+      max-height: 100%;
+      overflow-y: auto;
       --cleanup-filter-row-height: 48px;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--oscd-base1, #667584) transparent;
     }
 
     cleanup-datasets,
@@ -70688,10 +70696,6 @@ OscdEditorCleanup.styles = i$6 `
         flex: 1 1 100%;
         height: auto;
         min-height: 480px;
-      }
-
-      .cleanup {
-        height: auto;
       }
     }
   `;
