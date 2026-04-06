@@ -56,7 +56,7 @@ const deployConfig = {
         { src: 'demo/plugins.deploy.js', dest: 'dist/demo' },
         { src: 'demo/sysconex-theme', dest: 'dist/demo' },
         { src: 'demo/sample.scd', dest: 'dist/demo' },
-        { src: 'dist/docs', dest: 'dist/demo' },
+        { src: 'dist/docs', dest: 'dist/demo/help' },
       ],
       verbose: true,
     }),

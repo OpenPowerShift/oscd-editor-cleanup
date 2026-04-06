@@ -6,5 +6,6 @@ start_page: ROOT:introduction.adoc
 asciidoc:
   attributes:
     prerelease: true
+    page-standalone-help: ''
 nav:
   - modules/ROOT/nav.adoc

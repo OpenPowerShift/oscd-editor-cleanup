@@ -71,6 +71,10 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
     super.disconnectedCallback();
   }
 
+  private openHelp(): void {
+    this.helpOpen = true;
+  }
+
   private static readonly DOCS_URL =
     'docs/oscd-editor-cleanup/dev/introduction.html';
 
@@ -97,7 +101,7 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
         class="help-button"
         label="Help"
         @click=${() => {
-          this.helpOpen = true;
+          this.openHelp();
         }}
       >
         <oscd-icon>help_outline</oscd-icon>
@@ -112,11 +116,7 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
       >
         <div slot="headline">Help</div>
         <div slot="content" class="help-content">
-          <iframe
-            src=${OscdEditorCleanup.DOCS_URL}
-            title="OpenSCD Cleanup Plugin Documentation"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          ></iframe>
+          <iframe src=${OscdEditorCleanup.DOCS_URL} title="Help"></iframe>
         </div>
         <div slot="actions">
           <oscd-filled-button
@@ -144,18 +144,12 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
     .cleanup {
       display: flex;
       flex: 1;
-      flex-wrap: wrap;
-      align-content: flex-start;
+      flex-wrap: nowrap;
       gap: 20px;
       padding: 20px;
       min-height: 0;
-      height: auto;
-      max-height: 100%;
-      overflow-y: auto;
+      overflow: hidden;
       --cleanup-filter-row-height: 48px;
-      scrollbar-gutter: stable;
-      scrollbar-width: thin;
-      scrollbar-color: var(--oscd-base1, #667584) transparent;
     }
 
     cleanup-datasets,
@@ -172,11 +166,12 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
     .help-button {
       position: fixed;
       top: 8px;
-      right: 8px;
+      right: 96px;
       z-index: 100;
       --md-icon-button-icon-size: 20px;
       --md-icon-button-container-size: 32px;
-      color: var(--oscd-base0, rgba(0, 0, 0, 0.54));
+      --_icon-color: white;
+      /* var(--oscd-base1, rgba(0, 0, 0, 0.54)); */
     }
 
     .help-dialog {
@@ -188,8 +183,11 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
 
     .help-content {
       width: 100%;
-      height: calc(90vh - 80px);
+      height: 100%;
       box-sizing: border-box;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--oscd-base1, #667584) transparent;
     }
 
     .help-content iframe {
@@ -200,10 +198,17 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
     }
 
     @media (max-width: 799px) {
+      .cleanup {
+        flex-direction: column;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--oscd-base1, #667584) transparent;
+      }
+
       cleanup-datasets,
       cleanup-control-blocks,
       cleanup-data-types {
-        flex: 1 1 100%;
+        flex: 0 0 auto;
         height: auto;
         min-height: 480px;
       }
@@ -214,7 +219,8 @@ export default class OscdEditorCleanup extends ScopedElementsMixin(LitElement) {
       }
 
       .help-content {
-        height: calc(90vh - 80px);
+        height: 100%;
+        overflow: none;
       }
     }
   `;

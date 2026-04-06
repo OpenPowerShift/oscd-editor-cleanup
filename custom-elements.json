@@ -93,6 +93,20 @@
               }
             },
             {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
               "kind": "field",
               "name": "DOCS_URL",
               "type": {
@@ -196,6 +210,20 @@
               "kind": "field",
               "name": "handleEditDialogEvent",
               "privacy": "private",
+              "inheritedFrom": {
+                "name": "OscdEditorCleanup",
+                "module": "src/oscd-editor-cleanup.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
               "inheritedFrom": {
                 "name": "OscdEditorCleanup",
                 "module": "src/oscd-editor-cleanup.ts"
@@ -377,6 +405,16 @@
               "kind": "field",
               "name": "handleEditDialogEvent",
               "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "openHelp",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "field",
