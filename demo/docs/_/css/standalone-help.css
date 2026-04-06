@@ -1,0 +1,226 @@
+/* oscd-theme overrides for standalone-help mode.
+   All colours reference --oscd-theme-* variables so any theme is honoured.
+
+   The :root block below defines fallback values (sysconex palette) for when
+   the page loads outside the editor shell — e.g. a direct browser visit or
+   inside an iframe where the shell's theming.css is not inherited.
+   When running inside the shell, the shell's own `* { --oscd-theme-* }`
+   rules override these per-element as normal cascade. */
+
+/* ── Fallback theme variables (light) ── */
+
+:root {
+  --oscd-theme-primary: #cb4b16;
+  --oscd-theme-secondary: #3790c8;
+  --oscd-theme-error: #dc2626;
+  --oscd-theme-heading: #ed8733;
+  --oscd-theme-base03: #1f2428;
+  --oscd-theme-base02: #2a3036;
+  --oscd-theme-base01: #404a54;
+  --oscd-theme-base00: #5a6672;
+  --oscd-theme-base0: #7d8a97;
+  --oscd-theme-base1: #8c99a6;
+  --oscd-theme-base2: #e8eaed;
+  --oscd-theme-base3: #f5f6f7;
+}
+
+/* ── Fallback theme variables (dark) ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oscd-theme-primary: #cb4b16;
+    --oscd-theme-secondary: #9dc6ff;
+    --oscd-theme-error: #dc2626;
+    --oscd-theme-heading: #c7d8ee;
+    --oscd-theme-base03: #242b33;
+    --oscd-theme-base02: #303841;
+    --oscd-theme-base01: #9aa8b6;
+    --oscd-theme-base00: #c7d5e4;
+    --oscd-theme-base0: #768594;
+    --oscd-theme-base1: #667584;
+    --oscd-theme-base2: #566473;
+    --oscd-theme-base3: #434f5b;
+  }
+}
+
+/* ── Layout: remove top offset when embedded in the editor shell ── */
+body {
+  padding-top: 0 !important;
+}
+
+.toolbar,
+.nav-container {
+  top: auto !important;
+}
+
+.nav {
+  top: auto;
+  height: 100%;
+}
+
+@media DISABLED {
+  /* ── Body ── */
+  body {
+    background-color: var(--oscd-theme-base3) !important;
+    color: var(--oscd-theme-base00) !important;
+  }
+
+  /* ── Top navbar ── */
+  .navbar {
+    background: var(--oscd-theme-base03) !important;
+    color: var(--oscd-theme-base3) !important;
+  }
+
+  .navbar a,
+  .navbar-item,
+  .navbar-link {
+    color: var(--oscd-theme-base3) !important;
+  }
+
+  /* ── Page toolbar (breadcrumb bar) ── */
+  .toolbar {
+    background-color: var(--oscd-theme-base2) !important;
+    box-shadow: 0 1px 0 var(--oscd-theme-base1) !important;
+    color: var(--oscd-theme-base00) !important;
+  }
+
+  .toolbar a {
+    color: var(--oscd-theme-secondary) !important;
+  }
+
+  /* ── Sidebar nav ── */
+  .nav-container,
+  .nav {
+    background: var(--oscd-theme-base2) !important;
+    box-shadow: 0.5px 0 3px var(--oscd-theme-base1) !important;
+  }
+
+  .nav-panel-explore {
+    background: var(--oscd-theme-base2) !important;
+  }
+
+  .nav-menu {
+    color: var(--oscd-theme-base00);
+  }
+
+  .nav-link,
+  .nav-text {
+    color: var(--oscd-theme-base01) !important;
+  }
+
+  .nav-link:hover {
+    color: var(--oscd-theme-primary) !important;
+  }
+
+  .is-current-page > .nav-text,
+  .is-current-page > .nav-link {
+    color: var(--oscd-theme-primary) !important;
+  }
+
+  /* ── Article content ── */
+  .doc {
+    color: var(--oscd-theme-base00) !important;
+  }
+
+  .doc h1,
+  .doc h2,
+  .doc h3,
+  .doc h4,
+  .doc h5,
+  .doc h6 {
+    color: var(--oscd-theme-heading) !important;
+  }
+
+  .doc a {
+    color: var(--oscd-theme-secondary) !important;
+  }
+
+  .doc a:hover {
+    color: var(--oscd-theme-primary) !important;
+  }
+
+  .doc a.unresolved {
+    color: var(--oscd-theme-error) !important;
+  }
+
+  /* ── Table of contents ── */
+  .toc-menu {
+    color: var(--oscd-theme-base0) !important;
+  }
+
+  .toc .toc-menu h3 {
+    color: var(--oscd-theme-base01) !important;
+  }
+
+  .toc .toc-menu a {
+    color: var(--oscd-theme-base00) !important;
+  }
+
+  .toc .toc-menu a.is-active {
+    border-left-color: var(--oscd-theme-primary) !important;
+    color: var(--oscd-theme-heading) !important;
+  }
+
+  /* ── Inline code ── */
+  code {
+    background: var(--oscd-theme-base2) !important;
+    color: var(--oscd-theme-base01) !important;
+    border: 1px solid var(--oscd-theme-base1);
+  }
+
+  /* ── Code / listing blocks ── */
+  .doc .listingblock pre:not(.highlight),
+  .doc .literalblock pre,
+  .doc pre.highlight > code {
+    background: var(--oscd-theme-base2) !important;
+    box-shadow: inset 0 0 1.75px var(--oscd-theme-base1) !important;
+    color: var(--oscd-theme-base00) !important;
+  }
+
+  /* ── Tables ── */
+  .doc table.tableblock thead {
+    background: var(--oscd-theme-base2);
+    color: var(--oscd-theme-heading);
+  }
+
+  .doc table.tableblock td,
+  .doc table.tableblock th {
+    border-color: var(--oscd-theme-base1) !important;
+  }
+
+  /* ── Admonition blocks ── */
+  .doc .admonitionblock {
+    background: var(--oscd-theme-base2);
+    border-left: 4px solid var(--oscd-theme-primary);
+  }
+
+  .doc .admonitionblock td.icon i.icon-note {
+    background-color: var(--oscd-theme-secondary) !important;
+  }
+
+  .doc .admonitionblock td.icon i.icon-important {
+    background-color: var(--oscd-theme-primary) !important;
+  }
+
+  /* ── Sidebar panels / example blocks ── */
+  .doc .sidebarblock {
+    background: var(--oscd-theme-base2) !important;
+    border-color: var(--oscd-theme-base1) !important;
+  }
+
+  /* ── Captions / subtitles ── */
+  .doc .admonitionblock .title,
+  .doc .exampleblock .title,
+  .doc .imageblock .title,
+  .doc .listingblock .title,
+  .doc .literalblock .title,
+  .doc .openblock .title,
+  .doc .videoblock .title,
+  .doc table.tableblock caption {
+    color: var(--oscd-theme-base0) !important;
+  }
+
+  /* ── Horizontal rules ── */
+  .doc hr {
+    background-color: var(--oscd-theme-base1);
+  }
+}
